@@ -21,11 +21,12 @@ func main() {
 	args := flag.Args()
 
 	var vim *exec.Cmd
-	vimEnv := os.Getenv("VIM")
-	if vimEnv == "" {
+	vimRuntime := os.Getenv("VIMRUNTIME")
+	if vimRuntime == "" {
 		vim = exec.Command("vim", args...)
 	}
 
+	vimEnv := filepath.Dir(vimRuntime)
 	switch filepath.Base(vimEnv) {
 	case "vim":
 		srvName := os.Getenv("VIM_SERVERNAME")
