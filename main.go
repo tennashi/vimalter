@@ -59,6 +59,9 @@ func main() {
 		vim = exec.Command(path, args...)
 
 	case "nvim":
+		if *tabFlg {
+			args = append([]string{"--remote-tab"}, args...)
+		}
 		vim = exec.Command("nvr", args...)
 	}
 
