@@ -27,6 +27,6 @@ $ vimalter [option] [file ...]
 * Please install or build the vim with `+serverclient` support.
 
 ## Vim8 `terminal-api` support
-Vim `terminal-api` support is partial.
+Vim `terminal-api` support is partial yet.
 * `--tab` is not supported.
 * No argument(i.e. you want to start editing an empty file in new buffer) is not supported.
