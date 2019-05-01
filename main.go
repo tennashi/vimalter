@@ -32,10 +32,15 @@ func main() {
 		srvName := os.Getenv("VIM_SERVERNAME")
 		if srvName == "" {
 			if len(args) == 0 {
-				fmt.Fprintln(os.Stderr, "open new file in vim8(-clientserver) is not supported")
+				fmt.Fprintln(os.Stderr, "open new file is not supported in vim8(server not started)")
 				os.Exit(1)
 			}
-			vim = exec.Command("echo", "-e", "\x1b]51;[\"drop\",\""+strings.Join(args, " ")+"\"]\x07")
+			if *tabFlg {
+				fmt.Fprintln(os.Stderr, "open the file in new tab is not supported in vim8(server not started)")
+				os.Exit(1)
+			} else {
+				vim = exec.Command("echo", "-e", "\x1b]51;[\"drop\",\""+strings.Join(args, " ")+"\"]\x07")
+			}
 			break
 		}
 		path, err := evalVimPath()
