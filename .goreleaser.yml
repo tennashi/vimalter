@@ -1,0 +1,38 @@
+before:
+  hooks:
+    - go mod download
+builds:
+  - env:
+    - CGO_ENABLED=0
+    - GO111MODULE=on
+archive:
+  replacements:
+    darwin: Darwin
+    linux: Linux
+    windows: Windows
+    amd64: 64-bit
+    386: 32-bit
+checksum:
+  name_template: 'checksums.txt'
+snapshot:
+  name_template: "{{ .Tag  }}-next"
+nfpm:
+  replacements:
+    darwin: Darwin
+    linux: Linux
+    windows: Windows
+    amd64: 64-bit
+    386: 32-bit
+  maintainer: Yuya OTA <yuya.gt@gmail.com>
+  description: Vim alternator
+  license: MIT
+  formats:
+    - deb
+    - rpm
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - '^docs:'
+      - '^test:'
+      - '^WIP:'

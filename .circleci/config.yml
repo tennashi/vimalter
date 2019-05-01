@@ -1,0 +1,78 @@
+version: 2.1
+
+executors:
+  default:
+    working_directory: ~/workdir
+    docker:
+      - image: circleci/golang:1.12
+
+commands:
+  restore:
+    steps:
+      - restore_cache:
+          name: Restore dependence packages
+          key: cache-{{ checksum "go.sum" }}
+  save:
+    steps:
+      - save_cache:
+          name: Cache dependence packages
+          key: cache-{{ checksum "go.sum" }}
+          paths:
+            - /go/pkg/mod/cache
+
+jobs:
+  setup:
+    executor:
+      name: default
+    steps:
+      - checkout
+      - restore
+      - run:
+          name: Install packages
+          command: go mod download
+      - save
+  test:
+    executor:
+      name: default
+    steps:
+      - checkout
+      - restore
+      - run:
+          name: Install lint tools
+          command: make setup-lint
+      - run:
+          name: Run test
+          command: make test
+      - save
+  release:
+    executor:
+      name: default
+    steps:
+      - checkout
+      - restore
+      - run:
+          name: Run goreleaser
+          command: echo $GOVERSION; curl -sL https://git.io/goreleaser | bash -s -- --rm-dist
+
+workflows:
+  test_and_release:
+    jobs:
+      - setup:
+          filters:
+            tags:
+              only: /[0-9]+(\.[0-9]+)(\.[0-9]+)/
+      - test:
+          requires:
+            - setup
+          filters:
+            tags:
+              only: /[0-9]+(\.[0-9]+)(\.[0-9]+)/
+      - release:
+          requires:
+            - test
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /[0-9]+(\.[0-9]+)(\.[0-9]+)/
+
