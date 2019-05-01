@@ -20,7 +20,7 @@ $ vimalter [option] [file ...]
 ## Options
 * `--tab`: Open specified file in a new tab when executed from terminal mode of vim/nvim.
 
-## Required in neovim
+## Neovim
 * Please install [mhinz/neovim-remote](https://github.com/mhinz/neovim-remote) in the `$PATH`
 
 ## Vim8 with `--remote`
