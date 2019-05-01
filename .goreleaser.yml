@@ -28,7 +28,6 @@ nfpm:
   license: MIT
   formats:
     - deb
-    - rpm
 changelog:
   sort: asc
   filters:
