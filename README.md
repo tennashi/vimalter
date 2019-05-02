@@ -12,6 +12,13 @@ Switch commands between inside and outside of the vim/nvim.
 ## In vim8 with `terminal-api`(partial support)
 [![asciicast](https://asciinema.org/a/4UM372nJ5LY65SKWNLhVqvcls.svg)](https://asciinema.org/a/4UM372nJ5LY65SKWNLhVqvcls)
 
+# Install
+Get from the [release page](https://github.com/tennashi/vimalter/releases)(recomended)
+or
+```shell
+$ go get -u github.com/tennashi/vimalter
+```
+
 # Usage
 ```bash
 $ vimalter [option] [file ...]
