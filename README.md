@@ -36,4 +36,4 @@ $ vimalter [option] [file ...]
 ```
 
 ## Options
-* `--tab`: Open specified file in a new tab when executed from terminal mode of vim/nvim.
+* `-tab`: Open specified file in a new tab when executed from terminal mode of vim/nvim.
