@@ -23,7 +23,7 @@ $ go get -u github.com/tennashi/vimalter
 * Please install [mhinz/neovim-remote](https://github.com/mhinz/neovim-remote) in the `$PATH`
 
 ## Vim8 with `--remote`
-* Please install or build the vim with `+serverclient` support.
+* Please install or build the vim with `+clientserver` support.
 
 ## Vim8 `terminal-api` support
 Vim `terminal-api` support is partial yet.
@@ -37,3 +37,10 @@ $ vimalter [option] [file ...]
 
 ## Options
 * `-tab`: Open specified file in a new tab when executed from terminal mode of vim/nvim.
+
+## Neovim & vim8 with `--remote`
+* If you start it as the default editor, such as `git commit`, you need to exit with`: w | bd`.
+* If you don't like this, put the following in your vimrc.(see. [mhinz/neovim-remote](https://github.com/mhinz/neovim-remote#typical-use-cases))
+```vim
+autocmd FileType gitcommit set bufhidden=delete
+```
