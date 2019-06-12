@@ -100,9 +100,9 @@ func runVimCS(srvName string, args []string) error {
 		}
 	} else {
 		if *tabFlg {
-			args = append([]string{"--servername", srvName, "--remote-tab"}, args...)
+			args = append([]string{"--servername", srvName, "--remote-tab-wait"}, args...)
 		} else {
-			args = append([]string{"--servername", srvName, "--remote"}, args...)
+			args = append([]string{"--servername", srvName, "--remote-wait"}, args...)
 		}
 
 	}
@@ -115,10 +115,18 @@ func runVimCS(srvName string, args []string) error {
 }
 
 func runNvimNVR(args []string) error {
-	if *tabFlg {
-		args = append([]string{"--remote-tab-wait"}, args...)
+	if len(args) == 0 {
+		if *tabFlg {
+			args = []string{"--remote-send", `<C-\><C-N>:tabnew<CR>`}
+		} else {
+			args = []string{"--remote-send", `<C-\><C-N>:new<CR>`}
+		}
 	} else {
-		args = append([]string{"--remote-wait"}, args...)
+		if *tabFlg {
+			args = append([]string{"--remote-tab-wait"}, args...)
+		} else {
+			args = append([]string{"--remote-wait"}, args...)
+		}
 	}
 	vim := exec.Command("nvr", args...)
 
