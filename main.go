@@ -73,9 +73,9 @@ func runVim(args []string) error {
 
 func runVimTapi(args []string) error {
 	if *tabFlg {
-		args = append([]string{"tabnew"}, args...)
+		args = append([]string{"tabnew", "done"}, args...)
 	} else {
-		args = append([]string{"split"}, args...)
+		args = append([]string{"split", "done"}, args...)
 	}
 	tapi := tapiexec.CallAPI("Tapi_open_wait", args)
 
