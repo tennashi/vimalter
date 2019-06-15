@@ -1,5 +1,5 @@
 # vimalter
-[![CircleCI](https://circleci.com/gh/tennashi/vimalter/tree/master.svg?style=shield)](https://circleci.com/gh/tennashi/vimalter/tree/master)  
+[![CircleCI](https://circleci.com/gh/tennashi/vimalter/tree/master.svg?style=shield)](https://circleci.com/gh/tennashi/vimalter/tree/master)
 Switch commands between inside and outside of the vim/nvim.
 
 # Screenshot
@@ -14,7 +14,9 @@ Switch commands between inside and outside of the vim/nvim.
 
 # Install
 Get from the [release page](https://github.com/tennashi/vimalter/releases)(recomended)
+
 or
+
 ```shell
 $ go get -u github.com/tennashi/vimalter
 ```
@@ -25,10 +27,8 @@ $ go get -u github.com/tennashi/vimalter
 ## Vim8 with `--remote`
 * Please install or build the vim with `+clientserver` support.
 
-## Vim8 `terminal-api` support
-Vim `terminal-api` support is partial yet.
-* `--tab` is not supported.
-* No argument(i.e. you want to start editing an empty file in new buffer) is not supported.
+## Vim8 `terminal-api`
+* Please install [tennashi/termopen.vim](https://github.com/tennashi/termopen.vim)
 
 # Usage
 ```bash
@@ -39,7 +39,7 @@ $ vimalter [option] [file ...]
 * `-tab`: Open specified file in a new tab when executed from terminal mode of vim/nvim.
 
 ## Neovim & vim8 with `--remote`
-* If you start it as the default editor, such as `git commit`, you need to exit with`: w | bd`.
+* If you start it as the default editor, such as `git commit`, you need to exit with `: w | bd`.
 * If you don't like this, put the following in your vimrc.(see. [mhinz/neovim-remote](https://github.com/mhinz/neovim-remote#typical-use-cases))
 ```vim
 autocmd FileType gitcommit set bufhidden=delete
