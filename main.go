@@ -71,11 +71,16 @@ func runVim(args []string) error {
 	return vim.Run()
 }
 
+func genResID() string {
+	return "response"
+}
+
 func runVimTapi(args []string) error {
+	resID := genResID()
 	if *tabFlg {
-		args = append([]string{"tabnew", "done"}, args...)
+		args = append([]string{"tabnew", resID}, args...)
 	} else {
-		args = append([]string{"split", "done"}, args...)
+		args = append([]string{"split", resID}, args...)
 	}
 	tapi := tapiexec.CallAPI("Tapi_open_wait", args)
 
@@ -83,7 +88,7 @@ func runVimTapi(args []string) error {
 	if err != nil {
 		return err
 	}
-	return tapiexec.WaitMsg("done")
+	return tapiexec.WaitMsg(resID, "done")
 }
 
 func runVimCS(srvName string, args []string) error {
