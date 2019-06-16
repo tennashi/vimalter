@@ -9,7 +9,7 @@ Switch commands between inside and outside of the vim/nvim.
 ## In vim8 with `--remote`
 [![asciicast](https://asciinema.org/a/045L59uL9XthDB6UBStzP1ojC.svg)](https://asciinema.org/a/045L59uL9XthDB6UBStzP1ojC)
 
-## In vim8 with `terminal-api`(partial support)
+## In vim8 with `terminal-api`
 [![asciicast](https://asciinema.org/a/4UM372nJ5LY65SKWNLhVqvcls.svg)](https://asciinema.org/a/4UM372nJ5LY65SKWNLhVqvcls)
 
 # Install
