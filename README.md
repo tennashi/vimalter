@@ -26,6 +26,10 @@ $ go get -u github.com/tennashi/vimalter
 
 ## Vim8 with `--remote`
 * Please install or build the vim with `+clientserver` support.
+* Please executes (or writes it to `.vimrc`) the following command.
+```vim
+call remote_startserver("vimalter")
+```
 
 ## Vim8 `terminal-api`
 * Please install [tennashi/termopen.vim](https://github.com/tennashi/termopen.vim)
